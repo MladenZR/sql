@@ -1,5 +1,5 @@
 # sql
-# if left join
+# if inner join
 SELECT  DATE(a.datum) AS DATE, 
   SUM(IF(b.osoba = A )) AS "A", 
   SUM(IF(b.osoba = B )) AS "B",
