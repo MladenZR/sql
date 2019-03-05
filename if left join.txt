@@ -1,0 +1,12 @@
+# sql
+# if left join
+SELECT  DATE(a.datum) AS DATE, 
+  SUM(IF(b.osoba = A )) AS "A", 
+  SUM(IF(b.osoba = B )) AS "B",
+  SUM(IF(b.osoba = C )) AS "C",
+  COUNT(*) AS Total
+FROM datebase_name.table_a a
+INNER JOIN datebase_name.table_b b
+  ON b.jmbg  = a.jmbg
+  WHERE a.datum> DATE_SUB(NOW(), INTERVAL 100 DAY)
+  GROUP BY 1
