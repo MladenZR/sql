@@ -1,0 +1,19 @@
+# sql
+#group by hours
+SELECT cet_datetime, 
+hour(cet_datetime),
+count(case when hour(cet_datetime)>="0" and hour(cet_datetime)<"2" then 1 end) as "00-02h",
+count(case when hour(cet_datetime)>="2" and hour(cet_datetime)<"4" then 1 end) as "02-04h",
+count(case when hour(cet_datetime)>="4" and hour(cet_datetime)<"6" then 1 end) as "04-06h",
+count(case when hour(cet_datetime)>="6" and hour(cet_datetime)<"8" then 1 end) as "06-08h",
+count(case when hour(cet_datetime)>="8" and hour(cet_datetime)<"10" then 1 end) as "08-10h",
+count(case when hour(cet_datetime)>="10" and hour(cet_datetime)<"12" then 1 end) as "10-12h",
+count(case when hour(cet_datetime)>="12" and hour(cet_datetime)<"14" then 1 end) as "12-14h",
+count(case when hour(cet_datetime)>="14" and hour(cet_datetime)<"16" then 1 end) as "14-16h",
+count(case when hour(cet_datetime)>="16" and hour(cet_datetime)<"18" then 1 end) as "16-18h",
+count(case when hour(cet_datetime)>="18" and hour(cet_datetime)<"20" then 1 end) as "18-20h",
+count(case when hour(cet_datetime)>="20" and hour(cet_datetime)<"22" then 1 end) as "20-22h",
+count(case when hour(cet_datetime)>="22" and hour(cet_datetime)<"0" then 1 end) as "22-00h"
+FROM database_name.table_name
+where event_name=good
+group by 1
