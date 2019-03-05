@@ -1,0 +1,12 @@
+# sql
+# case when
+# time date interval
+SELECT date AS Date, id,
+    COUNT(CASE WHEN massage= B THEN A END) AS "Right",
+    COUNT(CASE WHEN massage= A THEN A END)
+    +COUNT(CASE WHEN massage= B THEN A END)
+    +COUNT(CASE WHEN massage= C THEN A END)
+    +COUNT(CASE WHEN massage= D THEN A END) AS "Lump sum"
+  FROM table_name
+  WHERE database_name.table_name > DATE_SUB(NOW(), INTERVAL 120 DAY)
+  group by 1
