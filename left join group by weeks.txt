@@ -1,0 +1,20 @@
+# sql
+#left join group by weeks
+SELECT (week(cet_datetime)) AS "Weeks",
+DATE(cet_datetime) AS "Date", 
+COUNT(table_a.user) AS "Users",
+COUNT(table_b.event) AS "Events",
+(COUNT(CASE WHEN table_b.event_type = A THEN A END)) AS "Good events",
+(COUNT(CASE WHEN table_b.event_type = A THEN A END)
+    +COUNT(CASE WHEN table_b.event_type = B THEN A END)
+    +COUNT(CASE WHEN table_b.event_type = C THEN A END)
+    +COUNT(CASE WHEN table_b.event_type = E THEN A END)) AS "Total events",
+    (COUNT(CASE WHEN table_b.event_type = A THEN A END))/
+(COUNT(CASE WHEN table_b.event_type = A THEN A END)
+    +COUNT(CASE WHEN table_b.event_type = B THEN A END)
+    +COUNT(CASE WHEN table_b.event_type = C THEN A END)
+    +COUNT(CASE WHEN table_b.event_type = E THEN A ELSE 0 END)) AS "Rate"
+FROM databese_name.event table_b
+LEFT JOIN databese_name.users table_a ON table_a.user_id=table_b.user_id
+GROUP BY 1
+ORDER BY 1 ASC
